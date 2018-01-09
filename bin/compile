@@ -69,6 +69,8 @@ then
     name=$(cat $build/.godir)
     echo +++ expectred
     ls -lrRt $env_dir
+    cat "$env_dir/GOVERSION"
+    echo "$env_dir/GOVERSION"
     if test -f "$env_dir/GOVERSION"
     then
         echo +++ expected
@@ -82,8 +84,8 @@ else
     exit 1
 fi
 echo ---
-echo $name
-echo $ver
+echo name $name
+echo ver $ver
 
 num_ver=${ver:2}
 minor_ver=$(echo $num_ver | cut -d. -f2)
