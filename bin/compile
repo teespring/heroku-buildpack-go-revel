@@ -73,6 +73,8 @@ else
     exit 1
 fi
 
+num_ver=${ver:2}
+minor_ver=$(echo $num_ver | cut -d. -f2)
 file=${GOFILE:-$ver.$(uname|tr A-Z a-z)-amd64$(platext $ver).tar.gz}
 url=${GOURL:-$(urlfor $ver $file)}
 
@@ -162,6 +164,9 @@ then
         echo "-----> Running: godep go install ${FLAGS[@]} ./..."
         godep go install "${FLAGS[@]}" ./...
     fi
+elif test -d $build/vendor && (($minor_ver >= 6))
+then
+    echo "-----> Using dependencies from $build/vendor"
 else
     echo "-----> Running: go get ${FLAGS[@]} ./..."
     go get "${FLAGS[@]}" ./...
