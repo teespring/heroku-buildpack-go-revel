@@ -69,8 +69,6 @@ then
     name=$(cat $build/.godir)
     echo +++ expectred
     ls -lrRt $env_dir
-    cat "$env_dir/GOVERSION"
-    echo "$env_dir/GOVERSION"
     if test -f "$env_dir/GOVERSION"
     then
         echo +++ expected
@@ -78,6 +76,7 @@ then
     else
         num_ver="1.4"
     fi
+    ver=go${num_ver}
 else
     echo >&2 " !     A .godir is required. For instructions:"
     echo >&2 " !     http://mmcgrana.github.io/2012/09/getting-started-with-go-on-heroku"
