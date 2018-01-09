@@ -66,7 +66,14 @@ then
 elif test -f $build/.godir
 then
     name=$(cat $build/.godir)
-    ver=go${GOVERSION:-1.4}
+    echo +++ expectred
+    if test -f "$env_dir/GOVERSION"
+    then
+        echo +++ expected
+        num_ver=$(cat "$env_dir/GOVERSION")
+    else
+        num_ver="1.4"
+    fi
     echo +++ expectred
 else
     echo >&2 " !     A .godir is required. For instructions:"
