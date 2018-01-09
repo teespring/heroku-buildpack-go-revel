@@ -67,11 +67,8 @@ then
 elif test -f $build/.godir
 then
     name=$(cat $build/.godir)
-    echo +++ expectred
-    ls -lrRt $env_dir
     if test -f "$env_dir/GOVERSION"
     then
-        echo +++ expected
         num_ver=$(cat "$env_dir/GOVERSION")
     else
         num_ver="1.4"
@@ -82,9 +79,6 @@ else
     echo >&2 " !     http://mmcgrana.github.io/2012/09/getting-started-with-go-on-heroku"
     exit 1
 fi
-echo ---
-echo name $name
-echo ver $ver
 
 num_ver=${ver:2}
 minor_ver=$(echo $num_ver | cut -d. -f2)
