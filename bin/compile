@@ -173,6 +173,7 @@ then
 elif test -d $build/vendor && (($minor_ver >= 6))
 then
     echo "-----> Using dependencies from $build/vendor"
+    go get -u github.com/golang/dep/cmd/dep
 else
     echo "-----> Running: go get ${FLAGS[@]} ./..."
     go get "${FLAGS[@]}" ./...
